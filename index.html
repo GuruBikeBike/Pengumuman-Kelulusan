@@ -1,0 +1,217 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Kelulusan MI ANNUR'AIN 2024/2025</title>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;700&display=swap');
+
+    body {
+      background: linear-gradient(135deg, #7b2ff7, #f107a3);
+      font-family: 'Poppins', sans-serif;
+      color: #fff;
+      margin: 0;
+      padding: 0 1.5rem;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+    }
+
+    h1 {
+      font-size: 3rem;
+      margin-bottom: 0.2rem;
+      text-shadow: 2px 2px 5px rgba(0,0,0,0.3);
+    }
+
+    h2 {
+      font-weight: 400;
+      font-size: 1.5rem;
+      margin-top: 0;
+      margin-bottom: 1.5rem;
+      text-shadow: 1px 1px 4px rgba(0,0,0,0.2);
+    }
+
+    p.info {
+      font-size: 1.1rem;
+      margin: 0.2rem 0 2rem 0;
+      font-weight: 600;
+      text-shadow: 1px 1px 3px rgba(0,0,0,0.3);
+    }
+
+    input {
+      width: 280px;
+      max-width: 90vw;
+      padding: 0.8rem 1rem;
+      border-radius: 25px;
+      border: none;
+      font-size: 1.1rem;
+      outline: none;
+      box-shadow: 0 0 10px #e91e63;
+      transition: box-shadow 0.3s ease;
+    }
+    input:focus {
+      box-shadow: 0 0 15px #fff;
+    }
+
+    button {
+      margin-top: 1.2rem;
+      padding: 0.7rem 2.5rem;
+      background-color: #d500f9;
+      border: none;
+      border-radius: 30px;
+      color: white;
+      font-weight: 700;
+      font-size: 1.2rem;
+      cursor: pointer;
+      box-shadow: 0 4px 12px rgba(213,0,249,0.6);
+      transition: background-color 0.3s ease, transform 0.2s ease;
+    }
+    button:hover:not(:disabled) {
+      background-color: #aa00ff;
+      transform: scale(1.05);
+    }
+    button:disabled {
+      background-color: #7b2ff7aa;
+      cursor: not-allowed;
+      box-shadow: none;
+    }
+
+    .result {
+      margin-top: 2rem;
+      font-size: 1.3rem;
+      min-height: 2.5rem;
+      font-weight: 700;
+      text-shadow: 1px 1px 3px rgba(0,0,0,0.5);
+      user-select: none;
+    }
+
+    .footer {
+      margin-top: 3rem;
+      font-size: 0.9rem;
+      font-weight: 500;
+      color: #e1bee7cc;
+      user-select: none;
+    }
+  </style>
+</head>
+<body>
+  <h1>Kelulusan MI ANNUR'AIN</h1>
+  <h2>Tahun Ajaran 2024/2025</h2>
+  <p class="info">Cek kelulusan mulai Selasa, 3 Juni 2025 pukul 09.30 WIB</p>
+
+  <input id="inputQuery" type="text" placeholder="Masukkan NISN atau Nama" autocomplete="off" />
+  <br />
+  <button id="btnCheck" disabled>Cek Kelulusan</button>
+
+  <div id="result" class="result"></div>
+
+  <p class="footer">Acara perpisahan akan dilaksanakan pada 21 Juni 2025.</p>
+
+  <script>
+    const students = {
+      "0128001146": { name: "AKSA IZZAN FISABILHAQ", status: "LULUS" },
+      "3136911548": { name: "ALFIN RAIS MA'RUFI", status: "LULUS" },
+      "3130511810": { name: "AVRILIA PUTRI ANDINI", status: "LULUS" },
+      "3136078815": { name: "BASTIAN ALRAZWA R", status: "LULUS" },
+      "0132183383": { name: "BYAN DAFFA PRATAMA PIINGA", status: "LULUS" },
+      "0134724728": { name: "CHERYL ALMAIRA", status: "LULUS" },
+      "0126553019": { name: "DHITO SYAFAS MARIADI", status: "LULUS" },
+      "3122862635": { name: "GIA PUTRI NURHAYATI", status: "LULUS" },
+      "3121392277": { name: "KEYLA ZASKIA", status: "LULUS" },
+      "3125944881": { name: "MOH ABILL AL GIFARI", status: "LULUS" },
+      "3128000232": { name: "MOH. RAHSYA AL QIANU", status: "LULUS" },
+      "3111902960": { name: "MUH. FATHAN AL FAIRUZ", status: "LULUS" },
+      "0131908143": { name: "MUTMAINAH FEBRIANA", status: "LULUS" },
+      "0121660111": { name: "NAJWA ALIANI SULFA", status: "LULUS" },
+      "0133621376": { name: "NANDA ALISYA PUTRI", status: "LULUS" },
+      "0126798614": { name: "NAYLA ANGGRAINI", status: "LULUS" },
+      "0133063969": { name: "RAHMAD KHAIRUL ANAM", status: "LULUS" },
+      "0131962942": { name: "RAHMAN ALFATIH", status: "LULUS" },
+      "3138478130": { name: "RASYA ANGGORO PUTRA PRASONGKO", status: "LULUS" },
+      "3134375096": { name: "RIZA ARRAHMAN ADITYA", status: "LULUS" },
+      "3125598562": { name: "SALZABIL ZAINZAYYAN", status: "LULUS" },
+      "0131925183": { name: "SEKAR ARUM LARASATI", status: "LULUS" },
+      "0121393300": { name: "SYIFA AMANDA", status: "LULUS" },
+      "3135667411": { name: "ADAM ZULFIKAR", status: "LULUS" },
+      "3138505924": { name: "ADZAM NOVAL", status: "LULUS" },
+      "3133382712": { name: "ALGIO AZZAM MOHJEA JHORIS", status: "LULUS" },
+      "0134518756": { name: "ALKHANSA HAURA TSANI SAMUDIA", status: "LULUS" },
+      "0135308829": { name: "ANDI ASKANA RIFDA KALILA", status: "LULUS" },
+      "0138670943": { name: "AQIFAH RADWA", status: "LULUS" },
+      "0134830350": { name: "ARJUNA PRATAMA", status: "LULUS" },
+      "0125877779": { name: "ARSYIL HAYFA AL DZIKRI", status: "TIDAK LULUS" },
+      "3126052170": { name: "ARTRI RAHMADANI", status: "LULUS" },
+      "3134223735": { name: "ASSYAUQI CHAIRUN NIZAM", status: "LULUS" },
+      "0137320472": { name: "FAHIRA AULIA", status: "LULUS" },
+      "3127767635": { name: "FASTIVA NISFA ANDITA AYUNG", status: "LULUS" },
+      "3138396754": { name: "HAURA NAZHIFA", status: "LULUS" },
+      "3135834190": { name: "KHADIFA ANGREANI", status: "LULUS" },
+      "0125990900": { name: "KIRANA ADILA PUTRI", status: "LULUS" },
+      "3129083308": { name: "MOCH AZZAM ARIFSYAH", status: "LULUS" },
+      "0135764162": { name: "MOH PRADIPTA REZA GHOZALI", status: "LULUS" },
+      "3122101866": { name: "MUH FAIRUZUL WAFIFARADIS", status: "LULUS" },
+      "3138792294": { name: "MUHAMMAD AL AF GANI K ABD LATIF", status: "LULUS" },
+      "0122833838": { name: "NAGITA FITRIA AFIANI", status: "LULUS" },
+      "3127962836": { name: "SITI AINUL JANNAH", status: "LULUS" },
+      "3132084900": { name: "SYAHWI MIRZA ALAMGHIR", status: "LULUS" },
+      "3134860868": { name: "SYIFA NUR AZIZAH", status: "LULUS" },
+      "0129925715": { name: "TASYA AFIQAH", status: "LULUS" },
+      "0121384887": { name: "ZAHRA SEPTIANI", status: "LULUS" }
+    };
+
+    const nameToNisn = {};
+    for (const nisn in students) {
+      nameToNisn[students[nisn].name.toLowerCase()] = nisn;
+    }
+
+    const btnCheck = document.getElementById('btnCheck');
+    const inputQuery = document.getElementById('inputQuery');
+    const resultDiv = document.getElementById('result');
+
+    function cekWaktu() {
+      const now = new Date();
+      const startDate = new Date('2025-06-03T09:30:00');
+      if (now >= startDate) {
+        btnCheck.disabled = false;
+        return true;
+      } else {
+        btnCheck.disabled = true;
+        return false;
+      }
+    }
+
+    cekWaktu();
+    setInterval(cekWaktu, 10000);
+
+    btnCheck.onclick = function () {
+      const q = inputQuery.value.trim();
+      if (!q) {
+        alert('Masukkan NISN atau Nama terlebih dahulu!');
+        return;
+      }
+
+      let nisn = null;
+      if (students[q]) {
+        nisn = q;
+      } else if (nameToNisn[q.toLowerCase()]) {
+        nisn = nameToNisn[q.toLowerCase()];
+      }
+
+      if (nisn) {
+        const siswa = students[nisn];
+        if (siswa.status === 'LULUS') {
+          resultDiv.innerHTML = `🎉 Selamat <strong>${siswa.name}</strong>! Anda dinyatakan <strong>LULUS</strong>!`;
+        } else {
+          resultDiv.innerHTML = `😢 Mohon maaf, <strong>${siswa.name}</strong> dinyatakan <strong>TIDAK LULUS</strong>.`;
+        }
+      } else {
+        resultDiv.innerHTML = `❌ Data tidak ditemukan, mohon cek kembali NISN atau Nama Anda.`;
+      }
+    };
+  </script>
+</body>
+</html>
